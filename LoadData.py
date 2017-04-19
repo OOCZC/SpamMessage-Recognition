@@ -12,7 +12,7 @@ def loadData():
 		n = 1
 		if f:
 			print 'open file succeeed'
-		while n <5:  #600000
+		while n <80000:  #600000
 			n = n + 1
 			line = f.readline()
 			m = re.split('\t',line)  #返回list
@@ -21,6 +21,8 @@ def loadData():
 			flag = int(m[0])  # str -> int
 			mess = m[1]  #str类型
 			messList = jieba.lcut(mess,cut_all=False)
+			if(n%1000 == 0):
+				print 'loadData',n
 			#print str(messlist).decode('string_escape')
 			#print messlist #一条短信分词的list,没处理
 			postingList.append(messList)
@@ -35,8 +37,12 @@ def loadData():
 # jieba.lcut 直接返回list	
 def createVocabList(dataSet):
 	vocabSet = set([])
+	n = 0
 	for doc in dataSet:
+		n = n + 1
 		vocabSet = vocabSet | set(doc)
+		if n % 1000 == 0:
+			print 'createVocabList',n
 	return list(vocabSet)
 def word2Vec(vocabList, inputSet):
 	returnVec = [0]*len(vocabList) #与词汇表等长的list
@@ -51,6 +57,10 @@ Vocabulary!" % word
 
 postingList,classVec = loadData() 
 vocabSet = createVocabList(postingList) #vocabSet是词汇表
+#print len(vocabSet)
+
 for doc in postingList:
 	print word2Vec(vocabSet, doc) #某条短信对应的词向量
+	#returnVec
+
 
