@@ -48,7 +48,7 @@ def word2Vec(vocabList, inputSet):
 	returnVec = [0]*len(vocabList) #与词汇表等长的list
 	for word in inputSet:
 		if word in vocabList:
-			returnVec[vocabList.index(word)] = 1
+			returnVec[vocabList.index(word)] += 1
 			#returnVec从0开始
 		else:
 			print "the word: %s is not in my \
