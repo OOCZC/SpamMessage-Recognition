@@ -63,4 +63,3 @@ for doc in postingList:
 	print word2Vec(vocabSet, doc) #某条短信对应的词向量
 	#returnVec
 
-
