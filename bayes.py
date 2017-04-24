@@ -3,6 +3,21 @@
 import uniout  #让list正常输出中文，不显示unicode
 from numpy import *
 
+'''
+
+trainNB(trainMatrix, trainCategory):
+训练出模型
+
+#trainMatrix是二维array类型，为词向量矩阵,每一行为词向量
+array((1,0,1,0,1,0),(0,1,1,1,0,1),(0,0,1,1,1,0))
+#trainCategory是一维array类型，标记每个词向量的类型
+array(1,0,0,0,1,0,1)
+
+p0Vec,p1Vec:array型一维数组，与词向量等长，表示在0/1型短
+信中各个词出现的概率，即P(w|c)
+pAbusive:浮点数，表示垃圾短信的概率，即P(c1)
+
+'''
 def trainNB(trainMatrix, trainCategory):
 	# trainMatrix是二维array类型，为词向量矩阵
 	# trainCategory是一维array类型
@@ -27,6 +42,15 @@ def trainNB(trainMatrix, trainCategory):
 	return p0Vec,p1Vec,pAbusive
 	# 两个向量，一个垃圾短信概率
 
+'''
+
+classifyNB(vec2Classify, p0Vec, p1Vec, pClass):
+判断vec2Classify这个词向量所属类型
+
+#vec2Classify是词向量，(1,0,0,1,0,1)
+#p0Vec,p1Vec,PClass 为trainNB的三个输出
+
+'''
 def classifyNB(vec2Classify, p0Vec, p1Vec, pClass):
 	#判断vec2Classify向量的分类
 	p1 = sum(vec2Classify * p1Vec) + log(pClass1)
