@@ -21,15 +21,16 @@ def testLoadData():
 	testPostingList = []; testClassVec = []
 	try:
 		f = open('./data/带标签短信.txt','r')
-		n = 1
-		if f == NULL:
+		n = 0
+		if not f:
 			print 'open file failed~'
 			raise ValueError('open file failed~')
-		while n <80000:  #600000
+		print 'open file succeed~'
+		while n < 8000:  #600000
 			n = n + 1
 			line = f.readline()
 		n = 0
-		while n < 5000:
+		while n < 500:
 			n = n + 1
 			line = f.readline()
 			m = re.split('\t',line)  #返回list
@@ -69,10 +70,10 @@ def loadData():
 	postingList = []; classVec = []
 	try:
 		f = open('./data/带标签短信.txt','r')
-		n = 1
+		n = 0
 		if f:
 			print 'open file succeeed'
-		while n <80000:  #600000
+		while n < 8000:  #600000
 			n = n + 1
 			line = f.readline()
 			m = re.split('\t',line)  #返回list
@@ -109,7 +110,7 @@ def createVocabList(dataSet):
 	vocabSet = set([])
 	n = 0
 	for doc in dataSet:
-		n = n + 1
+		n += 1
 		vocabSet = vocabSet | set(doc)
 		if n % 1000 == 0:
 			print 'createVocabList',n
@@ -138,13 +139,13 @@ def word2Vec(vocabList, inputSet):
 			print "the word: %s is not in my \
 Vocabulary!" % word
 	return returnVec  #list 类型
-
+'''
 #####test code
 postingList,classVec = loadData() 
 vocabSet = createVocabList(postingList) #vocabSet是词汇表
 #print len(vocabSet)
 
 for doc in postingList:
-	print word2Vec(vocabSet, doc) #某条短信对应的词向量
+	print word2Vec(vocabSet, doc),'ooc' #某条短信对应的词向量
 	#returnVec
-
+'''

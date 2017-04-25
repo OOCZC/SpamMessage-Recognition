@@ -35,9 +35,9 @@ def trainNB(trainMatrix, trainCategory):
 			p1Denom += sum(trainMatrix[i])
 		else:
 			p0Num += trainMatrix[i]
-			p0Demon += sum(trainMatrix[i])
-	p1Vect = log(p1Num/p1Demon) #array数组除浮点数，得array数组
-	p0Vect = log(p0Num/p0Demon) #取log，之后相加即可
+			p0Denom += sum(trainMatrix[i])
+	p1Vec = log(p1Num/p1Denom) #array数组除浮点数，得array数组
+	p0Vec = log(p0Num/p0Denom) #取log，之后相加即可
 	#每个词在普通短信中出现的概率，p(w|c0)
 	return p0Vec,p1Vec,pAbusive
 	# 两个向量，一个垃圾短信概率
@@ -51,7 +51,7 @@ classifyNB(vec2Classify, p0Vec, p1Vec, pClass):
 #p0Vec,p1Vec,PClass 为trainNB的三个输出
 
 '''
-def classifyNB(vec2Classify, p0Vec, p1Vec, pClass):
+def classifyNB(vec2Classify, p0Vec, p1Vec, pClass1):
 	#判断vec2Classify向量的分类
 	p1 = sum(vec2Classify * p1Vec) + log(pClass1)
 	# sum(vec2Classify * p1Vec)为log(p(w|c))
