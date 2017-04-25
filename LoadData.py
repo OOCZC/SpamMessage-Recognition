@@ -3,7 +3,8 @@
 import jieba
 import re
 import uniout  #让list正常输出中文，不显示unicode
-
+trainDataNum = 100000  #设置训练数据的数量
+testDataNum = 1000  #设置测试数据的数量
 
 '''
 testLoadData():
@@ -26,11 +27,11 @@ def testLoadData():
 			print 'open file failed~'
 			raise ValueError('open file failed~')
 		print 'open file succeed~'
-		while n < 8000:  #600000
+		while n < trainDataNum:  #600000
 			n = n + 1
 			line = f.readline()
 		n = 0
-		while n < 500:
+		while n < testDataNum:
 			n = n + 1
 			line = f.readline()
 			m = re.split('\t',line)  #返回list
@@ -40,7 +41,7 @@ def testLoadData():
 			mess = m[1]  #str类型
 			messList = jieba.lcut(mess,cut_all=False)
 			# jieba.lcut 直接返回list	
-			if(n%1000 == 0):
+			if(n % 1000 == 0):
 				print 'testLoadData',n
 			#print str(messlist).decode('string_escape')
 			#print messlist #一条短信分词的list,没处理
@@ -73,7 +74,7 @@ def loadData():
 		n = 0
 		if f:
 			print 'open file succeeed'
-		while n < 8000:  #600000
+		while n < trainDataNum:  
 			n = n + 1
 			line = f.readline()
 			m = re.split('\t',line)  #返回list
@@ -82,7 +83,7 @@ def loadData():
 			flag = int(m[0])  # str -> int
 			mess = m[1]  #str类型
 			messList = jieba.lcut(mess,cut_all=False)
-			if(n%1000 == 0):
+			if(n % 1000 == 0):
 				print 'loadData',n
 			#print str(messlist).decode('string_escape')
 			#print messlist #一条短信分词的list,没处理
@@ -135,9 +136,8 @@ def word2Vec(vocabList, inputSet):
 		if word in vocabList:
 			returnVec[vocabList.index(word)] += 1
 			#returnVec从0开始
-		else:
-			print "the word: %s is not in my \
-Vocabulary!" % word
+		#else:
+		#	print "the word: %s is not in my Vocabulary!" % word
 	return returnVec  #list 类型
 '''
 #####test code

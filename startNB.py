@@ -26,6 +26,7 @@ for doc in testSet:
 	testVec = word2Vec(vocabList, doc)
 	if classifyNB(array(testVec), p0V, p1V, pSpam) != testClass[n]:
 		errorCount += 1
+		print testClass[n],'----',doc
 	n += 1
 
 print 'errorCount:',errorCount
