@@ -3,8 +3,8 @@
 import jieba
 import re
 import uniout  #让list正常输出中文，不显示unicode
-trainDataNum = 100000  #设置训练数据的数量
-testDataNum = 1000  #设置测试数据的数量
+trainDataNum = 100000  #设置训练数据的数量，10w条时8G内存不够
+testDataNum = 5000  #设置测试数据的数量
 
 '''
 testLoadData():
