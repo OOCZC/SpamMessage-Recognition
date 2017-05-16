@@ -13,7 +13,6 @@ from bayes import *
 def tcplink(sock, addr):
 	print 'Accept new connection from %s:%s...' % addr
 	# addr是tuple ('127.0.0.1', 56610)
-	sock.send('Welcome!')
 	recvString = sock.recv(10240)
 	#print str(m).decode('string_escape')
 	print recvString #显示编码，无法正确显示中文
@@ -43,7 +42,7 @@ p0V,p1V,pSpam = trainNB(array(trainMat), array(classVec))
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #创建TCP,IPv4的Socket
-s.bind(('127.0.0.1', 6464))
+s.bind(('0.0.0.0', 6464))
 #绑定端口
 s.listen(10)
 #监听端口，指定等待连接的最大数量5
