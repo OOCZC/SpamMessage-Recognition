@@ -42,10 +42,11 @@ p0V,p1V,pSpam = trainNB(array(trainMat), array(classVec))
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #创建TCP,IPv4的Socket
-s.bind(('0.0.0.0', 6464))
+s.bind(('0.0.0.0', 6463))
 #绑定端口
 s.listen(10)
 #监听端口，指定等待连接的最大数量5
+
 print 'Waiting for connection...'
 while True:
 	sock, addr = s.accept()
@@ -53,4 +54,5 @@ while True:
 	t = threading.Thread(target=tcplink, args=(sock, addr))
 	#创建新线程处理TCP连接
 	t.start()
+
 
