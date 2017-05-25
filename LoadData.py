@@ -70,7 +70,7 @@ def loadData():
 
 	postingList = []; classVec = []
 	try:
-		f = open('./data/带标签短信.txt','r')
+		f = open('./data/filterMess.txt','r')
 		n = 0
 		if f:
 			print 'open file succeeed'

@@ -27,7 +27,7 @@ def tcplink1(sock1, addr1):
 
 s1 = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 #创建TCP,IPv4的Socket
-s1.bind(('0.0.0.0', 4632))
+s1.bind(('0.0.0.0', 6464))
 #绑定端口
 s1.listen(10)
 #监听端口，指定等待连接的最大数量5
