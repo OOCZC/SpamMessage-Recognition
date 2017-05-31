@@ -18,7 +18,7 @@ def tcplink1(sock1, addr1):
 	if f:
 		print 'open addMess.txt file succeed'
 	recvString1 = sock1.recv(10240)
-	f.write(recvString1)
+	f.write(recvString1+'\n')
 	f.close()
 	#print str(m).decode('string_escape')
 	print recvString1 #显示编码，无法正确显示中文
