@@ -5,6 +5,9 @@ import re
 import uniout  #让list正常输出中文，不显示unicode
 trainDataNum = 1000  #设置训练数据的数量，10w条时8G内存不够
 testDataNum = 5000  #设置测试数据的数量
+path_to_trainMess = '../data/filterMess.txt'
+path_to_testMess = '../data/带标签短信.txt'
+
 
 '''
 testLoadData():
@@ -21,13 +24,13 @@ def testLoadData():
 
 	testPostingList = []; testClassVec = []
 	try:
-		f = open('./data/带标签短信.txt','r')
+		f = open(path_to_trainMess,'r')
 		n = 0
 		if not f:
 			print 'open file failed~'
 			raise ValueError('open file failed~')
 		print 'open file succeed~'
-		while n < trainDataNum:  #600000
+		while n < trainDataNum:  
 			n = n + 1
 			line = f.readline()
 		n = 0
@@ -70,7 +73,7 @@ def loadData():
 
 	postingList = []; classVec = []
 	try:
-		f = open('./data/filterMess.txt','r')
+		f = open(path_to_testMess,'r')
 		n = 0
 		if f:
 			print 'open file succeeed'

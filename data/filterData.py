@@ -11,8 +11,8 @@ import random
 '''
 trainDataNum = 799000  
 
-f = open('./data/带标签短信.txt','r')
-fw = open('./data/filterMess.txt','w')
+f = open('带标签短信.txt','r')
+fw = open('filterMess.txt','w')
 def cutLoadData():
 	try:
 		n = 0
