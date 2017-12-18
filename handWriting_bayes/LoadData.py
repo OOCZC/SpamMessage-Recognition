@@ -5,8 +5,8 @@ import re
 import uniout  #让list正常输出中文，不显示unicode
 trainDataNum = 1000  #设置训练数据的数量，10w条时8G内存不够
 testDataNum = 5000  #设置测试数据的数量
-path_to_trainMess = '../data/filterMess.txt'
-path_to_testMess = '../data/带标签短信.txt'
+path_to_trainMess = '/home/ooc/Github/SpamMessage-Recognition/data/filterMess.txt'
+path_to_testMess = '/home/ooc/Github/SpamMessage-Recognition/data/带标签短信.txt'
 
 
 '''
