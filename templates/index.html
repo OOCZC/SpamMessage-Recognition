@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<title>垃圾短信识别</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+<script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
+<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+</head>
+
+<body>
+<div class="container"> <!--容器，用于包裹页面上的内容 -->
+<h1 class="text-center">垃圾短信识别</h1>
+<form id="messForm">
+    <div class="form">
+        <h3>输入短信：</h3>
+        <textarea class="form-control" name="message" id="message" rows="3" placeholder="请输入短信..." autofocus="" style="font-size:23px"></textarea>
+    </div>
+    <br>
+    <div class="btn-group btn-group-lg">
+        <input type="hidden" name="algorithm_name" id="algorithm_name" value="0">
+        <button type="button" class="btn btn-default" name="algorithm1" id="algorithm1" onclick="change1()">Bayes</button>
+        <button type="button" class="btn btn-default" name="algorithm2" id="algorithm2" onclick="change2()">SVM</button>
+    </div>
+</form>
+<br>
+    <button  class="btn btn-success pull-right" style="font-size:24px" onclick="recog()" data-loading-text="识别中..." type="button">识别</button>
+</div>
+<script>
+
+
+function change1(){
+document.getElementById("algorithm_name").value = 1
+}	
+
+function change2(){
+document.getElementById("algorithm_name").value = 2
+}   
+
+function recog(){
+
+        //$("#yiwen-baidu").val("翻译中...");
+	if(document.getElementById("algorithm_name").value == 0){
+		alert("用哪种算法识别也不说！")
+		return ;
+	}
+	if(document.getElementById("message").value == ""){
+		alert("短信都不输入，咋识别？")
+		return ;
+	}
+	//alert("11")
+        $.ajax({
+            url:"recog",
+            type:"POST",
+            data:$('#messForm').serialize(),
+            beforeSend: function(){},
+            success: function(data){
+                //$("#yiwen-local").val(data);
+                // $(".btn").button('reset')
+                //yiwen.value = data;
+                alert('success')
+            },
+            error: function(e){
+                alert('Error');
+            }
+        });
+	document.getElementById("algorithm_name").value = 0
+        // $(".btn").button('reset')
+     }
+	
+</script>
+</body>
+</html>
