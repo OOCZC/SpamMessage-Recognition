@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-import uniout  #让list正常输出中文，不显示unicode
 from numpy import *
 
 '''

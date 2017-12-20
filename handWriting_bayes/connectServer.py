@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 # client
 import socket
 
@@ -11,5 +9,5 @@ s.connect((server_ip, 6463))
 data = '一次价值xxx元王牌项目；可充值xxx元店内项目卡一张；可以参与V动好生活百分百抽奖机会一次！预约电话：xxxxxxxxxxx'
 s.send(data)
 # 发送数据:
-print s.recv(1024)
+print(s.recv(1024))
 s.close()

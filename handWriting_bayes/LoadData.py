@@ -1,8 +1,5 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import jieba
 import re
-import uniout  #让list正常输出中文，不显示unicode
 trainDataNum = 1000  #设置训练数据的数量，10w条时8G内存不够
 testDataNum = 5000  #设置测试数据的数量
 path_to_trainMess = '/home/ooc/Github/SpamMessage-Recognition/data/filterMess.txt'
@@ -27,9 +24,9 @@ def testLoadData():
 		f = open(path_to_trainMess,'r')
 		n = 0
 		if not f:
-			print 'open file failed~'
+			print('open file failed~')
 			raise ValueError('open file failed~')
-		print 'open file succeed~'
+		print('open file succeed~')
 		while n < trainDataNum:  
 			n = n + 1
 			line = f.readline()
@@ -45,7 +42,7 @@ def testLoadData():
 			messList = jieba.lcut(mess,cut_all=False)
 			# jieba.lcut 直接返回list	
 			if(n % 1000 == 0):
-				print 'testLoadData',n
+				print('testLoadData',n)
 			#print str(messlist).decode('string_escape')
 			#print messlist #一条短信分词的list,没处理
 			testPostingList.append(messList)
@@ -76,7 +73,7 @@ def loadData():
 		f = open(path_to_testMess,'r')
 		n = 0
 		if f:
-			print 'open file succeeed'
+			print('open file succeeed')
 		while n < trainDataNum:  
 			n = n + 1
 			line = f.readline()
@@ -87,7 +84,7 @@ def loadData():
 			mess = m[1]  #str类型
 			messList = jieba.lcut(mess,cut_all=False)
 			if(n % 1000 == 0):
-				print 'loadData',n
+				print('loadData',n)
 			#print str(messlist).decode('string_escape')
 			#print messlist #一条短信分词的list,没处理
 			postingList.append(messList)
@@ -117,7 +114,7 @@ def createVocabList(dataSet):
 		n += 1
 		vocabSet = vocabSet | set(doc)
 		if n % 1000 == 0:
-			print 'createVocabList',n
+			print('createVocabList',n)
 	return list(vocabSet)
 
 '''
