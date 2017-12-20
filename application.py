@@ -34,6 +34,7 @@ if __name__ == '__main__':
     #以下代码测试算法的初始化过程
     postingList,classVec = loadData()
     vocabList = createVocabList(postingList)
+    #print("test test test")
     #vocabList 是中文词汇表
     trainMat = []  #训练数据矩阵。[[1,0,0,1,0,1],[0,1,1,0,0,1],[1,1,0,0,1,1]]
     n = 0 
